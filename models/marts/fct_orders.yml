@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Fact table containing cleaned and processed order transactions."
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_id
+        description: "Primary key for each unique order."
+        data_type: string
+        constraints:
+          - type: not_null
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+
+      - name: location_id
+        description: "Identifier for the store location."
+        data_type: string
+
+      - name: customer_id
+        description: "Identifier for the customer placing the order."
+        data_type: string
+
+      - name: order_total
+        description: "Total monetary value of the order."
+        data_type: float64
+
+      - name: tax_paid
+        description: "Tax paid on the order."
+        data_type: float64
+
+      - name: ordered_at
+        description: "Timestamp indicating when the order was placed."
+        data_type: timestamp
+
+      - name: customer_name
+        description: "Name of the customer."
+        data_type: string
+
+      - name: location_name
+        description: "Name of the store location."
+        data_type: string
+
+      - name: tax_rate
+        description: "Tax rate applied to the order."
+        data_type: float64
+
+      - name: location_opened_at
+        description: "Datetime when the store location was opened."
+        data_type: datetime
+
+      - name: ordered_month
+        description: "Extracted month component from the order timestamp."
+        data_type: int64
+
+      - name: ordered_day
+        description: "Extracted day component from the order timestamp."
+        data_type: int64
+
+      - name: ordered_year
+        description: "Extracted year component from the order timestamp."
+        data_type: int64
